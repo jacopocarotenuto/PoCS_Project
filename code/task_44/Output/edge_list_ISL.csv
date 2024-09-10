@@ -1,0 +1,5 @@
+nodeID_from,nodeID_to,country_name,country_ISO3,scaled_sci
+2493,2493,Iceland,ISL,5801953
+2493,2494,Iceland,ISL,2881264
+2494,2493,Iceland,ISL,2881264
+2494,2494,Iceland,ISL,9227147

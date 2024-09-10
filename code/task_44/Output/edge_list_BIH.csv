@@ -1,0 +1,10 @@
+nodeID_from,nodeID_to,country_name,country_ISO3,scaled_sci
+316,316,Bosnia and Herzegovina,BIH,16710069
+316,317,Bosnia and Herzegovina,BIH,189161
+316,318,Bosnia and Herzegovina,BIH,318850
+317,316,Bosnia and Herzegovina,BIH,189161
+317,317,Bosnia and Herzegovina,BIH,909909
+317,318,Bosnia and Herzegovina,BIH,104852
+318,316,Bosnia and Herzegovina,BIH,318850
+318,317,Bosnia and Herzegovina,BIH,104852
+318,318,Bosnia and Herzegovina,BIH,1938608
