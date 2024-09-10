@@ -1,0 +1,5 @@
+nodeID_from,nodeID_to,country_name,country_ISO3,scaled_sci
+3387,3387,Malta,MLT,4550848
+3387,3388,Malta,MLT,1799265
+3388,3387,Malta,MLT,1799265
+3388,3388,Malta,MLT,45155565
