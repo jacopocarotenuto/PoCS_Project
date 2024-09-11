@@ -1,9 +1,34 @@
-using GraphPlot, SimpleWeightedGraphs, Graphs, Plots, StatsBase, LsqFit, Distributions, JLD2
+function SetUpEnviroment()
+    using Pkg
+    current_dir = pwd()
+    if current_dir[end-11:end] == "PoCS_Project"
+        Pkg.activate("./")
+        Pkg.instantiate()
+    elseif current_dir[end-7:end] == "task_34"
+        Pkg.activate("../../")
+        Pkg.instantiate()
+    else
+        print("Please run script from the main directory or the script parent directory")
+    end
+
+    # Get the current directory
+    current_dir = pwd()
+    # Check if the current directory is the one with the script
+    if current_dir[end-11:end] == "PoCS_Project"
+        # If not change to the directory with the script
+        cd("code/task_34")
+    end
+end
+
+
+SetUpEnviroment()
+using GraphPlot, Graphs, Plots, Distributions
 gr()
 
 # Rounds to record for each simulation
 rounds_to_record_NS = [1,100,1000,10000,20000]
 rounds_to_record_SP =  [1,100,1000,10000,100000]
+
 
 # Data structure to store the results of the simulations
 struct UG_Stats

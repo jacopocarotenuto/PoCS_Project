@@ -1,18 +1,32 @@
-using GraphPlot, SimpleWeightedGraphs, Graphs, Plots, DataFrames, CSV, GraphDataFrameBridge, Statistics, Glob
-gr()
+function SetUpEnviroment()
+    using Pkg
+    current_dir = pwd()
+    if current_dir[end-11:end] == "PoCS_Project"
+        Pkg.activate("./")
+        Pkg.instantiate()
+    elseif current_dir[end-7:end] == "task_44"
+        Pkg.activate("../../")
+        Pkg.instantiate()
+    else
+        print("Please run script from the main directory or the script parent directory")
+    end
 
-# Relevant Functions
-
-
-function FixWorkingDirectory()
     # Get the current directory
     current_dir = pwd()
     # Check if the current directory is the one with the script
-    if current_dir[end-6:end] != "task_44"
+    if current_dir[end-11:end] == "PoCS_Project"
         # If not change to the directory with the script
         cd("code/task_44")
     end
 end
+
+
+
+SetUpEnviroment()
+using GraphPlot, SimpleWeightedGraphs, Graphs, Plots, DataFrames, CSV, GraphDataFrameBridge, Statistics, Glob
+gr()
+
+# Relevant Functions
 
 # Function to extract the graph for a specific country from edge_list
 function extract_country_graph(edge_list)
@@ -59,8 +73,6 @@ function analyze_country_graph(countries_edges_list)
     end
     return results
 end
-
-FixWorkingDirectory()
 
 # Some plot options
 graph_plot_options = Dict(:EDGELINEWIDTH => 0.1, :arrowlengthfrac => 0.02, :plot_size => (12cm,12cm));
