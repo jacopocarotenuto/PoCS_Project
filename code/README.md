@@ -1,7 +1,7 @@
 # The Code
 
 All the tasks were completely done in Julia. The code folder is divided into 3 subfolders, each one corresponding to a different task. In this document there is a simple description of the content of each folder and the instructions to run the code.
-Before trying to run any of the task code, make sure to have Julia 1.10 installed on the machine and to run, from inside the repository root folder ("/PoCS_Project"), the following command to setup the environment: `julia EnvironmentSetup.jl`.
+Before trying to run any of the task code, make sure to have Julia 1.10 installed on the machine and to run, from inside the repository root folder ("/PoCS_Project"), the following command to setup the environment: `julia code/EnvironmentSetup.jl`.
 
 ## Task 15
 This folder contains the script to execute task 15 ( `task15.jl` ) and a "Plots" folder for the output plots. To run the code these are the instructions:

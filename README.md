@@ -14,7 +14,7 @@ Additionaly there are some files in the root directory:
 - `.gitignore`: The gitignore file.
 - `Project.toml`: The Julia environment files.
 
-To run the code it is necessary to have Julia 1.10 installed on the machine. Before attempting to run the task code, to setup the environment run the following command from the root directory of the repository: `julia EnvironmentSetup.jl`.
+To run the code it is necessary to have Julia 1.10 installed on the machine. Before attempting to run the task code, to setup the environment run the following command from the root directory of the repository: `julia code/EnvironmentSetup.jl`.
 
 ## The Tasks
 Inside the `code` folder there is a folder for each task and a `README.md` file with the instruction to run the code.
