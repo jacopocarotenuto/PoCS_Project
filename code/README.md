@@ -4,13 +4,13 @@ All the tasks were completely done in Julia. The code folder is divided into 3 s
 
 ## Task 15
 This folder contains the script to execute task 15 ( `task15.jl` ) and a "Plots" folder for the output plots. To run the code these are the instructions:
-1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project` or `PoCS_Project/code/task_15`.
-2. From the bash terminal, run the following command: `julia task15.jl`. This will execute the script.
+1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project`.
+2. From the bash terminal, run the following command: `julia code/task_15/task15.jl`. This will execute the script.
 
 ## Task 34
 This folder contains the script to execute task 34 ( `task34.jl` ) and a "Plots" folder for the output plots. To run the code these are the instructions:
-1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project` or `PoCS_Project/code/task_34`.
-2. From the bash terminal, run the following command: `julia task34.jl`. This will execute the script.
+1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project`.
+2. From the bash terminal, run the following command: `julia code/task_34/task34.jl`. This will execute the script.
 
 ## Task 44
 This folder contains the script to execute task 44 ( `task44_1.jl` and `task44_2.jl` ), the "Plots" folder for the output plots, the "Output" folder for the output data (Edges lists and Node list) and the "Data" folder where the Data needed for the task is stored. As per instructions on the course moodle, the data is not included in the repository. To run the code additional files are needed, all the necessary information is contained in the final report.
@@ -23,6 +23,6 @@ The file needed are:
 
 
 Given that all data files are present in the "Data" folder, to run the code these are the instructions:
-1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project` or `PoCS_Project/code/task_44`.
-2. In the bash terminal, run the following command: `julia task44_1.jl`. This will execute the first part of the script where the raw data is processed and the output files are generated.
-3. In the bash terminal, run the following command: `julia task44_2.jl`. This will execute the second part of the script where the analysis is performed and the output plots are generated.
+1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project`.
+2. In the bash terminal, run the following command: `julia code/task_44/task44_1.jl`. This will execute the first part of the script where the raw data is processed and the output files are generated.
+3. In the bash terminal, run the following command: `julia code/task_44/task44_2.jl`. This will execute the second part of the script where the analysis is performed and the output plots are generated.
