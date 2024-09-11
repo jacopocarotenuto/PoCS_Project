@@ -22,10 +22,9 @@ function SetUpEnviroment()
 end
 
 SetUpEnviroment()
-default(fmt = :png)
 gr()
 
-file_to_write_results = "FitResults.txt"
+file_to_write_results = "./FitResults.txt"
 AllStruct = []
 
 # Data Structure to store all relevant information of a Sandpile Simulation
@@ -198,7 +197,7 @@ function TotalPlot(AllSandpiles)
     for sp in AllSandpiles[2:end]
         plot!(sp.Sizes[3:end], sp.SizesProbabilities[3:end], xaxis=:log, yaxis=:log, label=sp.graph_type)
     end
-    savefig("Plots/TotalPlot.pdf")
+    savefig("./Plots/TotalPlot.pdf")
     return nothing
 end
 
@@ -207,6 +206,8 @@ end
 
 
 ### Gaussian Degree Distribution
+print("\rSimulating Gaussian Degree Distribution Graph                                                               ")
+
 N = 100000
 degree_sequence = abs.(Int.(floor.(rand(Normal(20,6), N))))
 if sum(degree_sequence) % 2 != 0
@@ -220,6 +221,7 @@ SaveResultsToFile(file_to_write_results, GaussianDegreeDistribution; io_mode="w"
 append!(AllStruct, [GaussianDegreeDistribution])
 
 #### Uniform Degree Distribution
+print("\rSimulating Uniform Degree Distribution Graph                                                               ")
 N = 100000
 degree_sequence = abs.(Int.(floor.(rand(1:40, N))))
 if sum(degree_sequence) % 2 != 0
@@ -233,6 +235,7 @@ SaveResultsToFile(file_to_write_results, UniformDegreeDistribution)
 append!(AllStruct, [UniformDegreeDistribution])
 
 #### Power Degree Distribution Gamma 2
+print("\rSimulating Scale Free Graph, γ = 2                                                               ")
 N = 100000
 g = static_scale_free(N, N*2, 2)
 PowerDegreeDistribution2 = CompleteSandpilePipeline(g, "Power Degree Distribution Gamma 2"; total_grains=N*20)
@@ -242,6 +245,7 @@ SaveResultsToFile(file_to_write_results, PowerDegreeDistribution2)
 append!(AllStruct, [PowerDegreeDistribution2])
 
 #### Power Degree Distribution Gamma 2.5
+print("\rSimulating Scale Free Graph, γ = 2.5                                                               ")
 N = 100000
 g = static_scale_free(N, N*2, 2.5)
 PowerDegreeDistribution2_5 = CompleteSandpilePipeline(g, "Power Degree Distribution Gamma 2.5"; total_grains=N*20)
@@ -251,6 +255,7 @@ SaveResultsToFile(file_to_write_results, PowerDegreeDistribution2_5)
 append!(AllStruct, [PowerDegreeDistribution2_5])
 
 #### Power Degree Distribution Gamma 3
+print("\rSimulating Scale Free Graph, γ = 3                                                               ")
 N = 100000
 g = static_scale_free(N, N*2, 3)
 PowerDegreeDistribution3 = CompleteSandpilePipeline(g, "Power Degree Distribution Gamma 3"; total_grains=N*20)
@@ -260,6 +265,7 @@ SaveResultsToFile(file_to_write_results, PowerDegreeDistribution3)
 append!(AllStruct, [PowerDegreeDistribution3])
 
 #### Power Degree Distribution Gamma 4
+print("\rSimulating Scale Free Graph, γ = 4                                                               ")
 N = 100000
 g = static_scale_free(N, N*2, 4)
 PowerDegreeDistribution4 = CompleteSandpilePipeline(g, "Power Degree Distribution Gamma 4"; total_grains=N*20)
@@ -269,6 +275,7 @@ SaveResultsToFile(file_to_write_results, PowerDegreeDistribution4)
 append!(AllStruct, [PowerDegreeDistribution4])
 
 #### Erdos Renyi Network
+print("\rSimulating Erdos Renyi Graph                                                               ")
 N = 100000
 g = erdos_renyi(N, 0.0002)
 ErdosRenyi = CompleteSandpilePipeline(g, "Erdos Renyi Network"; total_grains=N*20)
@@ -278,6 +285,7 @@ SaveResultsToFile(file_to_write_results, ErdosRenyi)
 append!(AllStruct, [ErdosRenyi])
 
 #### Barabasi Albert Network
+print("\rSimulating Barabasi Albert Graph                                                               ")
 N = 100000
 g = barabasi_albert(N, 10)
 BarabasiAlbert = CompleteSandpilePipeline(g, "Barabasi Albert Network"; total_grains=N*20)
@@ -287,3 +295,5 @@ SaveResultsToFile(file_to_write_results, BarabasiAlbert)
 append!(AllStruct, [BarabasiAlbert])
 
 TotalPlot(AllStruct)
+
+print("\rTask 15 Completed                                                                                 ")
