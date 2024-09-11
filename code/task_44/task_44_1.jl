@@ -1,5 +1,5 @@
+using DataFrames, CSV, Countries, GeoIO, GeoStats, Pkg
 function SetUpEnviroment()
-    using Pkg
     current_dir = pwd()
     if current_dir[end-11:end] == "PoCS_Project"
         Pkg.activate("./")
@@ -20,10 +20,7 @@ function SetUpEnviroment()
     end
 end
 
-
-
 SetUpEnviroment()
-using DataFrames, CSV, Countries, GeoIO, GeoStats
 
 # Function to convert code to ISO3 format based on the type
 function from_code_to_ISO3(code, type)

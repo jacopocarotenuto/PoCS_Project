@@ -1,5 +1,6 @@
+using Graphs, Plots, StatsBase, LsqFit, Distributions, Pkg
+
 function SetUpEnviroment()
-    using Pkg
     current_dir = pwd()
     if current_dir[end-11:end] == "PoCS_Project"
         Pkg.activate("./")
@@ -20,9 +21,7 @@ function SetUpEnviroment()
     end
 end
 
-
 SetUpEnviroment()
-using Graphs, Plots, StatsBase, LsqFit, Distributions
 default(fmt = :png)
 gr()
 

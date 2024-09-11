@@ -1,5 +1,6 @@
+using GraphPlot, Graphs, Plots, Distributions, Pkg
+
 function SetUpEnviroment()
-    using Pkg
     current_dir = pwd()
     if current_dir[end-11:end] == "PoCS_Project"
         Pkg.activate("./")
@@ -22,7 +23,7 @@ end
 
 
 SetUpEnviroment()
-using GraphPlot, Graphs, Plots, Distributions
+
 gr()
 
 # Rounds to record for each simulation

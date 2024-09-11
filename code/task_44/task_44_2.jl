@@ -1,5 +1,6 @@
+using GraphPlot, SimpleWeightedGraphs, Graphs, Plots, DataFrames, CSV, GraphDataFrameBridge, Statistics, Glob, Pkg
+
 function SetUpEnviroment()
-    using Pkg
     current_dir = pwd()
     if current_dir[end-11:end] == "PoCS_Project"
         Pkg.activate("./")
@@ -21,9 +22,7 @@ function SetUpEnviroment()
 end
 
 
-
 SetUpEnviroment()
-using GraphPlot, SimpleWeightedGraphs, Graphs, Plots, DataFrames, CSV, GraphDataFrameBridge, Statistics, Glob
 gr()
 
 # Relevant Functions
