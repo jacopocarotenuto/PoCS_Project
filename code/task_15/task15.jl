@@ -214,7 +214,7 @@ if sum(degree_sequence) % 2 != 0
 end
 g = random_configuration_model(N, degree_sequence)
 GaussianDegreeDistribution = CompleteSandpilePipeline(g, "Gaussian Degree Distribution"; total_grains=N*20)
-PlotResults("Plots/Gaussian.png", GaussianDegreeDistribution)
+PlotResults("./Plots/Gaussian.png", GaussianDegreeDistribution)
 SaveResultsToFile(file_to_write_results, GaussianDegreeDistribution; io_mode="w")
 
 append!(AllStruct, [GaussianDegreeDistribution])
@@ -227,7 +227,7 @@ if sum(degree_sequence) % 2 != 0
 end
 g = random_configuration_model(N, degree_sequence)
 UniformDegreeDistribution = CompleteSandpilePipeline(g, "Uniform Degree Distribution"; total_grains=N*20)
-PlotResults("Plots/Uniform.png", UniformDegreeDistribution)
+PlotResults("./Plots/Uniform.png", UniformDegreeDistribution)
 SaveResultsToFile(file_to_write_results, UniformDegreeDistribution)
 
 append!(AllStruct, [UniformDegreeDistribution])
@@ -236,7 +236,7 @@ append!(AllStruct, [UniformDegreeDistribution])
 N = 100000
 g = static_scale_free(N, N*2, 2)
 PowerDegreeDistribution2 = CompleteSandpilePipeline(g, "Power Degree Distribution Gamma 2"; total_grains=N*20)
-PlotResults("Plots/ScaleFree2.png", PowerDegreeDistribution2)
+PlotResults("./Plots/ScaleFree2.png", PowerDegreeDistribution2)
 SaveResultsToFile(file_to_write_results, PowerDegreeDistribution2)
 
 append!(AllStruct, [PowerDegreeDistribution2])
@@ -245,7 +245,7 @@ append!(AllStruct, [PowerDegreeDistribution2])
 N = 100000
 g = static_scale_free(N, N*2, 2.5)
 PowerDegreeDistribution2_5 = CompleteSandpilePipeline(g, "Power Degree Distribution Gamma 2.5"; total_grains=N*20)
-PlotResults("Plots/ScaleFree25.png", PowerDegreeDistribution2_5)
+PlotResults("./Plots/ScaleFree25.png", PowerDegreeDistribution2_5)
 SaveResultsToFile(file_to_write_results, PowerDegreeDistribution2_5)
 
 append!(AllStruct, [PowerDegreeDistribution2_5])
@@ -254,7 +254,7 @@ append!(AllStruct, [PowerDegreeDistribution2_5])
 N = 100000
 g = static_scale_free(N, N*2, 3)
 PowerDegreeDistribution3 = CompleteSandpilePipeline(g, "Power Degree Distribution Gamma 3"; total_grains=N*20)
-PlotResults("Plots/ScaleFree3.png", PowerDegreeDistribution3)
+PlotResults("./Plots/ScaleFree3.png", PowerDegreeDistribution3)
 SaveResultsToFile(file_to_write_results, PowerDegreeDistribution3)
 
 append!(AllStruct, [PowerDegreeDistribution3])
@@ -263,7 +263,7 @@ append!(AllStruct, [PowerDegreeDistribution3])
 N = 100000
 g = static_scale_free(N, N*2, 4)
 PowerDegreeDistribution4 = CompleteSandpilePipeline(g, "Power Degree Distribution Gamma 4"; total_grains=N*20)
-PlotResults("Plots/ScaleFree4.png", PowerDegreeDistribution4)
+PlotResults("./Plots/ScaleFree4.png", PowerDegreeDistribution4)
 SaveResultsToFile(file_to_write_results, PowerDegreeDistribution4)
 
 append!(AllStruct, [PowerDegreeDistribution4])
@@ -272,7 +272,7 @@ append!(AllStruct, [PowerDegreeDistribution4])
 N = 100000
 g = erdos_renyi(N, 0.0002)
 ErdosRenyi = CompleteSandpilePipeline(g, "Erdos Renyi Network"; total_grains=N*20)
-PlotResults("Plots/ErdosRenyi.png", ErdosRenyi)
+PlotResults("./Plots/ErdosRenyi.png", ErdosRenyi)
 SaveResultsToFile(file_to_write_results, ErdosRenyi)
 
 append!(AllStruct, [ErdosRenyi])
@@ -281,7 +281,7 @@ append!(AllStruct, [ErdosRenyi])
 N = 100000
 g = barabasi_albert(N, 10)
 BarabasiAlbert = CompleteSandpilePipeline(g, "Barabasi Albert Network"; total_grains=N*20)
-PlotResults("Plots/BarabasiAlbert.png", BarabasiAlbert)
+PlotResults("./Plots/BarabasiAlbert.png", BarabasiAlbert)
 SaveResultsToFile(file_to_write_results, BarabasiAlbert)
 
 append!(AllStruct, [BarabasiAlbert])
