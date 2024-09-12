@@ -30,7 +30,7 @@ gr()
 # Function to extract the graph for a specific country from edge_list
 function extract_country_graph(edge_list)
     country_edges = CSV.read(edge_list, DataFrame)[:, [1,2,5]]
-    country_graph = MetaDiGraph(country_edges, :nodeID_from, :nodeID_to, weight=:scaled_sci)
+    country_graph = MetaGraph(country_edges, :nodeID_from, :nodeID_to, weight=:scaled_sci)
     return country_graph, country_edges
 end
 
@@ -81,17 +81,15 @@ plot_options = Dict(:legendfontsize => 20, :yguidefontsize=>25,:xguidefontsize=>
 node_list = CSV.read("Output/node_list.csv", DataFrame)
 # Extract all the country codes
 countries_edges_list = glob("./Output/edge_list_*.csv")
-print("There are ", length(countries_edges_list), " countries in the dataset.") # There are 200 countries in the dataset
+print("There are ", length(countries_edges_list), " countries in the dataset.") # There are 199 countries in the dataset
 
 # Extracting the graph for every single country
 
 ## UNCOMMENT THIS TO RE-COMPUTE THE RESULTS
-#  graph_data = analyze_country_graph(countries_edges_list) # This is really really long, provided there are the pre-computed results
+#graph_data = analyze_country_graph(countries_edges_list) # This is really really long, provided there are the pre-computed results
 
 ## COMMENT THIS IF YOU DON'T WANT THE PRE-COMPUTED RESULTS
 graph_data = CSV.read("Data/graph_data.csv", DataFrame) # Load the pre-computed results
-
-
 
 graph_data = graph_data[graph_data.total_nodes .> 1, :]; # Remove countries with only one node
 
@@ -100,7 +98,7 @@ print("\r Plotting....                                                          
 
 # Total Nodes vs Total Edges
 scatter(graph_data.total_nodes, graph_data.total_edges, yscale=:log10, xlabel="Total Nodes", ylabel="Total Edges", title="Total Nodes vs Total Edges", size=(1000,800), label = "Data"; plot_options...)
-plot!(1:700, (1:700).^2, color=:red, label="Max Edges", linewidth=2, legend=:bottomright; plot_options...)
+plot!(2:700, (2:700).*(1:699) ./2 .+ (2:700), color=:red, label="Max Edges", linewidth=2, legend=:bottomright; plot_options...)
 savefig("Plots/TotalNodesVsTotalEdges.png")
 
 # Total Nodes vs Average Betweenness
