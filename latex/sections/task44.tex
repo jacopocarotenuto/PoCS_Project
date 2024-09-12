@@ -6,8 +6,8 @@ In this task the goal was to extract a network for each country present in the F
 The data was collected by Facebook and it is based on the number of friendships between people in different countries.
 From the documentation:
 \begin{quote}
-\textsc{The Social Connectedness Index uses an anonymized snapshot of active Facebook users and their friendship networks to measure the intensity of social connectedness between locations. Users are assigned to locations based on their information and activity on Facebook, including the stated city on their Facebook profile, and device and connection information.
-}\end{quote}
+The Social Connectedness Index uses an anonymized snapshot of active Facebook users and their friendship networks to measure the intensity of social connectedness between locations. Users are assigned to locations based on their information and activity on Facebook, including the stated city on their Facebook profile, and device and connection information.
+\end{quote}
 
 \section{Network Extraction}
 \subsection{Raw Data}
@@ -34,6 +34,7 @@ To assign to each location its coordinates, the geospatial data for each subdivi
 \begin{itemize}
     \item For the GADM subdivisions, the data was found in the GADM website\cite{GADM} (Version 2.8, world data).
     \item For the NUTS subdivisions, the data was found in the Eurostat website\cite{NUTS} (Year 2016, EPSG 4326).
+    \item For the US counties, the data was found in the Public Data website\cite{USCounties} (Year 2018).
 \end{itemize}
 The provided data was in the form of a ".shp" or ".geojson" files, so for the coordinates extraction the "GeoStats.jl" package was used\cite{geostats_package}. For all the administrative subdivision a polygon was provided, so the centroid of each polygon was used as the coordinates for the location. As the provided Facebook data contained different levels of administrative subdivisions, each level was analyzed separately.
 Then, as the Facebook area code used was different from all the other denominations, the area codes of each location were transformed in the Facebook format.

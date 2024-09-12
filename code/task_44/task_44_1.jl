@@ -60,9 +60,13 @@ function get_country_name(code)
 end
 
 # Function to convert ISO code to Facebook standard used
-function CodeToFacebookStandard(ISO, ID1 = " ", ID2 = " ")
+function CodeToFacebookStandard(ISO, ID1 = " ", ID2 = " "; USA = false)
     code = ISO
     if ID1 != " "
+        if USA
+            code *= ID1
+            return code
+        end
         code *= ID1
     end
     if ID2 != " "
@@ -73,13 +77,9 @@ end
 
 # Function to save all countries edge_list on different files
 function SaveAllCountriesEdgeList(edge_list)
-    # DO NOT SAVE USA
     # Extract all the country codes
     all_country_codes = unique(edge_list.country_ISO3)
     for code in all_country_codes
-        if code == "USA"
-            continue
-        end
         country_edges = edge_list[edge_list.country_ISO3 .== code, :]
         CSV.write("Output/edge_list_$code.csv", country_edges)
     end
@@ -168,15 +168,21 @@ GADM1_DATA = transform(GADM1_DATA, [:ISO, :ID_1] => ByRow((ISO, ID1) -> CodeToFa
 GADM2_DATA = DataFrame(GeoIO.load("Data/GADM_DATA/gadm28_adm2.shp"))
 GADM2_DATA = select(GADM2_DATA, [:ISO, :ID_1, :ID_2, :geometry])
 GADM2_DATA = transform(GADM2_DATA, [:ISO, :ID_1, :ID_2] => ByRow((ISO, ID1, ID2) -> CodeToFacebookStandard(ISO, string(ID1), string(ID2))) => :CODE)
+COUNTIES_DATA = DataFrame(GeoIO.load("Data/us-county-boundaries.geojson"))
+COUNTIES_DATA = select(COUNTIES_DATA, [:geoid, :geometry])
+COUNTIES_DATA = transform(COUNTIES_DATA, [:geoid] => ByRow((geoid) -> CodeToFacebookStandard("USA", string(geoid); USA = true)) => :CODE)
+
 
 # Filter GADM data based on Facebook levels
 print("\rFiltering...                                                                                                     ")
 FB_GADM0 = filter(row -> row[:level] == "country", FB_LV)
 FB_GADM1 = filter(row -> row[:level] == "gadm1", FB_LV)
 FB_GADM2 = filter(row -> row[:level] == "gadm2", FB_LV)
+FB_COUNTY = filter(row -> row[:level] == "county", FB_LV)
 GADM0_DATA = filter(row -> row.CODE in FB_GADM0.key, GADM0_DATA)
 GADM1_DATA = filter(row -> row.CODE in FB_GADM1.key, GADM1_DATA)
 GADM2_DATA = filter(row -> row.CODE in FB_GADM2.key, GADM2_DATA)
+COUNTIES_DATA = filter(row -> row.CODE in FB_COUNTY.key, COUNTIES_DATA)
 
 print("\rCalculating centroids...                                                                                                     ")
 # Add GADM0 code to coordinates mapping to the dictionary
@@ -192,6 +198,11 @@ end
 # Add GADM2 code to coordinates mapping to the dictionary
 for i in eachindex(GADM2_DATA.CODE)
     CODE_to_COORD[GADM2_DATA[i,:].CODE] = centroid(first(rings(GADM2_DATA[i,:].geometry)))
+end
+
+# Add COUNTY code to coordinates mapping to the dictionary
+for i in eachindex(COUNTIES_DATA.CODE)
+    CODE_to_COORD[COUNTIES_DATA[i,:].CODE] = centroid(first(rings(COUNTIES_DATA[i,:].geometry)))
 end
 
 # Get the IDs from the previously created dictionary

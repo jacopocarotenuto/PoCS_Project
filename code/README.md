@@ -19,6 +19,7 @@ The file needed are:
 - `gadm1_nuts3_counties_levels.csv`: Provided by the course link.
 - `gadm1_nuts3_counties-gadm1_nuts3_counties - FB Social Connectedness Index - October 2021.tsv`: Provided by the course link.
 - `NUTS_RG_60M_2016_4326.geojson`: Obtained on the [Eurostat website](https://ec.europa.eu/eurostat/web/gisco/geodata/statistical-units/territorial-units-statistics). In the options, select the NUTS 2016 year, the GeoJSON file forma, the Polygon geometry type, the 60M resolution and the EPSG 4326 coordinate reference system.
+- `us-county-boundaries.geojson`: Obtained on the  [OpenDataSoft website](https://public.opendatasoft.com/explore/dataset/us-county-boundaries/export/?disjunctive.statefp&disjunctive.countyfp&disjunctive.name&disjunctive.namelsad&disjunctive.stusab&disjunctive.state_name).
 - The "GADM_DATA" folder contains several files needed for the GADM data format analysis. The files can be obtained by clicking this link [GADM website](https://biogeo.ucdavis.edu/data/gadm2.8/gadm28.shp.zip). The link will download a zip file that will need decompression and renaming to "GADM_DATA".
 - `graph_data.csv`: This file is provided with the repo and contains the pre-computed analysis of the graphs.
 
