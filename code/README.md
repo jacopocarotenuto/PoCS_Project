@@ -23,6 +23,7 @@ The file needed are:
 - The "GADM_DATA" folder contains several files needed for the GADM data format analysis. The files can be obtained by clicking this link [GADM website](https://biogeo.ucdavis.edu/data/gadm2.8/gadm28.shp.zip). The link will download a zip file that will need decompression and renaming to "GADM_DATA".
 - `graph_data.csv`: This file is provided with the repo and contains the pre-computed analysis of the graphs.
 
+Note: the USA edge_list is not present in the repository as it is too large. But the `graph_data.csv` contains the pre-computed analysis of all graphs.
 
 Given that all data files are present in the "Data" folder, to run the code these are the instructions:
 1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project`.
