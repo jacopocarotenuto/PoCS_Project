@@ -1,4 +1,4 @@
-using GraphPlot, Graphs, Plots, Distributions, Pkg
+using GraphPlot, Graphs, Plots, Distributions, Pkg, StatsBase
 
 function SetUpEnviroment()
     current_dir = pwd()
@@ -289,12 +289,15 @@ N = 10000
 ### WARNING: This will take a long time to run
 
 ## Erdos Renyi
+print("\rSimulating on Erdos Renyi Graphs                                                                        \n")
 ErdosRenyi = MultipleUG(10, "Erdos Renyi", N)
 
 ## Barabasi Albert
+print("\rSimulating on Barabasi Albert Graphs                                                                    \n")
 BarabasiAlbert = MultipleUG(10, "Barabasi Albert", N)
 
 ## Scale Free
+print("\rSimulating on Scale Free Graphs                                                                         \n")
 ScaleFree = MultipleUG(10, "Scale Free", N)
 
 
@@ -323,3 +326,4 @@ SF_p_C_SP = PlotData(ScaleFree.p_C_SP,rounds_to_record_SP, "Only Type C", "p"; l
 plot(SF_p_A_NS, SF_p_B_NS, SF_p_C_NS, SF_p_A_SP, SF_p_B_SP, SF_p_C_SP, layout = (2,3), size=(4320,2160), margin = 3Plots.cm, dpi = 600, markerstrokewidth = 0.6)
 savefig("Plots/AllTypes_SF_AllRules.png")
 
+print("\rTask 34 completed!                                ")

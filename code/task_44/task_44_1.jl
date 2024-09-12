@@ -88,6 +88,8 @@ end
 
 ################################### CREATION OF EDGE LIST #######################################
 # Load the data
+println("###### CREATION OF EDGE LIST ######")
+print("\rLoading data...                                                                                                     ")
 data = CSV.read("Data/gadm1_nuts3_counties-gadm1_nuts3_counties - FB Social Connectedness Index - October 2021.tsv", DataFrame)
 
 # Create the dictionaries for the IDs
@@ -95,6 +97,7 @@ unique_codes = unique(data[:, 1])
 GADM3_to_ID = Dict(unique_codes[i] => i for i in eachindex(unique_codes))
 
 # Load the data for Facebook levels
+print("\rLoading level data...                                                                                                     ")
 FB_LV = CSV.read("Data/gadm1_nuts3_counties_levels.csv", DataFrame)
 FB_LV = transform(FB_LV, [:key, :level] => ByRow((x,y) -> from_code_to_ISO3(x, y)) => :country) # Transform the data adding the country name based on code
 
@@ -125,7 +128,7 @@ EdgeList = transform(EdgeList, :fr_loc => ByRow(x -> code_to_ISO3[x]) => :countr
 # Filter the data to keep only the connections within the same country
 EdgeList = filter(row -> row[:country_ISO3] == row[:country_ISO3_to], EdgeList)
 #####################################################################################################################
-
+print("\rBuilding edge list...                                                                                                     ")
 # Transform the data by adding the country name based on code
 EdgeList = transform(EdgeList, :country_ISO3 => ByRow(x -> get_country_name(x)) => :country_name)
 # Transform the data by adding the node ID (from) based on code
@@ -133,16 +136,18 @@ EdgeList = transform(EdgeList, :user_loc => ByRow(x -> GADM3_to_ID[x]) => :nodeI
 # Transform the data by adding the node ID (to) based on code
 EdgeList = transform(EdgeList, :fr_loc => ByRow(x -> GADM3_to_ID[x]) => :nodeID_to)
 # Select the columns we need
+print("\rFiltering...                                                                                                     ")
 EdgeList = select(EdgeList, [:nodeID_from, :nodeID_to, :country_name, :country_ISO3, :scaled_sci])
-
+print("\rSaving all edge lists...                                                                                                     ")
 SaveAllCountriesEdgeList(EdgeList)
 
 ################################### CREATION OF NODE LIST #######################################
-
+println("###### CREATION OF NODE LIST ######")
 # Create a dictionary to store code to coordinates mapping
 CODE_to_COORD = Dict()
 
 #### NUTS DATA ####
+print("\rLoading geodata. of NUTS..                                                                                                     ")
 NUTS = DataFrame(GeoIO.load("Data/NUTS_RG_60M_2016_4326.geojson")) # Load the data
 NUTS3 = filter(row -> row[:LEVL_CODE] == 3, NUTS) # Filter the data to keep only NUTS3 regions
 NUTS3_Coord = [centroid(i) for i in NUTS3.geometry]
@@ -153,6 +158,7 @@ for i in eachindex(NUTS3.NUTS_ID)
 end
 
 #### GADM DATA ####
+print("\rLoading geodata of GADM...                                                                                                     ")
 GADM0_DATA = DataFrame(GeoIO.load("Data/GADM_DATA/gadm28_adm0.shp"))
 GADM0_DATA = select(GADM0_DATA, [:ISO, :geometry])
 GADM0_DATA = transform(GADM0_DATA, [:ISO] => ByRow((ISO) -> CodeToFacebookStandard(ISO)) => :CODE)
@@ -164,6 +170,7 @@ GADM2_DATA = select(GADM2_DATA, [:ISO, :ID_1, :ID_2, :geometry])
 GADM2_DATA = transform(GADM2_DATA, [:ISO, :ID_1, :ID_2] => ByRow((ISO, ID1, ID2) -> CodeToFacebookStandard(ISO, string(ID1), string(ID2))) => :CODE)
 
 # Filter GADM data based on Facebook levels
+print("\rFiltering...                                                                                                     ")
 FB_GADM0 = filter(row -> row[:level] == "country", FB_LV)
 FB_GADM1 = filter(row -> row[:level] == "gadm1", FB_LV)
 FB_GADM2 = filter(row -> row[:level] == "gadm2", FB_LV)
@@ -171,6 +178,7 @@ GADM0_DATA = filter(row -> row.CODE in FB_GADM0.key, GADM0_DATA)
 GADM1_DATA = filter(row -> row.CODE in FB_GADM1.key, GADM1_DATA)
 GADM2_DATA = filter(row -> row.CODE in FB_GADM2.key, GADM2_DATA)
 
+print("\rCalculating centroids...                                                                                                     ")
 # Add GADM0 code to coordinates mapping to the dictionary
 for i in eachindex(GADM0_DATA.CODE)
     CODE_to_COORD[GADM0_DATA[i,:].CODE] = centroid(first(rings(GADM0_DATA[i,:].geometry)))
@@ -190,7 +198,7 @@ end
 NodeList = DataFrame("label" => collect(keys(GADM3_to_ID)), "ID" => collect(values(GADM3_to_ID)))
 LAT = zeros(length(NodeList.label))
 LON = zeros(length(NodeList.label))
-
+print("\rExtracting coordinates...                                                                                                     ")
 # Add latitude and longitude coordinates to the NodeList
 for i in eachindex(NodeList.label)
     if haskey(CODE_to_COORD, NodeList.label[i])
@@ -205,4 +213,6 @@ end
 NodeList = hcat(NodeList, DataFrame("LAT" => LAT, "LON" => LON))
 
 # Save to CSV
+print("\rSaving node_list...                                                                                                     ")
 CSV.write("Output/node_list.csv", NodeList)
+println("\r Part 1 of Task 44 completed successfully! ")
