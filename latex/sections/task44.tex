@@ -26,6 +26,7 @@ The first step was to extract all the unique locations present in the data and a
 Then each location was assigned the ISO3 code of the country it belonged to using the "Countries" package in Julia\cite{countries_package}.
 To each entry of the original file (so to each edge) the User ISO3 code and the Friend ISO3 code were added and all the edges between different countries were removed.
 The final edge list was saved in a ".csv" file, saving only the source node ID, target node ID, weight, country and country ISO code.
+For completeness, the edge list present all the (symmetric) edges present in the source file.
 
 \subsection{Node List}
 The node list was more of a challenge as the longitude and latitude of each location were not provided.
@@ -40,11 +41,7 @@ Then, for each unique node (excluding the ones in the USA) we associated the coo
 The final node list was saved in a ".csv" file, saving the node ID, longitude, latitude and label.
 
 \section{Network Comparison}
-From the edge lists and node lists, a SCI-weighted directed network was built for each country.
-
-
-The resulting countries network were all analyzed using Julia and some important network properties were extracted. All the resulting graphs were weighted by the correspoding SCI score.
-Some of them are contained in the following plots.
+The resulting countries SCI-weighted network were all analyzed using Julia and some important network properties were extracted. Some of them are contained in the following plots.
 
 \begin{figure}[H]
     \centering
@@ -53,9 +50,9 @@ Some of them are contained in the following plots.
     \label{fig:TotalNodesVsTotalEdges}
 \end{figure}
 
-From plot~\ref{fig:TotalNodesVsTotalEdges} we can see that the number of edges is proportional to the number of nodes (it's exactly the maximum number of connections, allowing for self-loops), as expected as all the networks are complete networks: every location has at least some people connected to every other location in the same country.
+From plot~\ref{fig:TotalNodesVsTotalEdges} we can see that the number of edges is proportional to the number of nodes (it's exactly the maximum number of undirected connections, allowing for self-loops), as expected as all the networks are complete networks: every location has at least some people connected to every other location in the same country.
 
-
+ 
 \begin{figure}[H]
     \centering
     \begin{minipage}{0.5\textwidth}
