@@ -84,8 +84,7 @@ countries_edges_list = glob("./Output/edge_list_*.csv")
 print("There are ", length(countries_edges_list), " countries in the dataset.") # There are 200 countries in the dataset
 
 # Extracting the graph for every single country
-graph_data = analyze_country_graph(countries_edges_list[end-11:end-11]) # This is really really long, provided there are the pre-computed results
-
+graph_data = analyze_country_graph(countries_edges_list) # This is really really long, provided there are the pre-computed results
 
 ## COMMENT THIS IF YOU DON'T WANT THE PRE-COMPUTED RESULTS
 graph_data = CSV.read("Data/graph_data.csv", DataFrame) # Load the pre-computed results
