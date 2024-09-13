@@ -19,10 +19,10 @@ To run the code it is necessary to have Julia 1.10 installed on the machine. Bef
 ## The Tasks
 Inside the `code` folder there is a folder for each task and a `README.md` file with the instruction to run the code.
 
-### Task 15 (Score 0.4)
+### Task 15 (Score 0.6)
 In this task the "Sandpile Model" on different types of networks is studied. This model is a type of dynamic process that can be simulated on a network that exhibits self-organized criticality (SOC). The model has been studied in different types of networks and some interesting relations have emerged, especially about the distribution of the avalanche size and duration. In this task the model will be simulated on different networks and calculate the corresponding distributions.
 
-### Task 34 (Score 0.6)
+### Task 34 (Score 0.4)
 
 In this task the evolution of strategies according to different "survival" rules will be studied. The "Ultimatum Game" on different networks with different types of players and strategies will be considered.
 
