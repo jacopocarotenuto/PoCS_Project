@@ -19,14 +19,14 @@ To run the code it is necessary to have Julia 1.10 installed on the machine. Bef
 ## The Tasks
 Inside the `code` folder there is a folder for each task and a `README.md` file with the instruction to run the code.
 
-### Task 15
+### Task 15 (Score 0.4)
 In this task the "Sandpile Model" on different types of networks is studied. This model is a type of dynamic process that can be simulated on a network that exhibits self-organized criticality (SOC). The model has been studied in different types of networks and some interesting relations have emerged, especially about the distribution of the avalanche size and duration. In this task the model will be simulated on different networks and calculate the corresponding distributions.
 
-### Task 34
+### Task 34 (Score 0.6)
 
 In this task the evolution of strategies according to different "survival" rules will be studied. The "Ultimatum Game" on different networks with different types of players and strategies will be considered.
 
-### Task 44
+### Task 44 (Score 1)
 
 In this task the goal was to extract a network for each country present in the Facebook Social Connectedness Index data. The data was collected by Facebook and it is based on the number of friendships between people in different countries.
 > The Social Connectedness Index uses an anonymized snapshot of active Facebook users and their friendship networks to measure the intensity of social connectedness between locations. Users are assigned to locations based on their information and activity on Facebook, including the stated city on their Facebook profile, and device and connection information.
