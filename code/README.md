@@ -5,12 +5,12 @@ Before trying to run any of the task code, make sure to have Julia 1.10 installe
 
 ## Task 15
 This folder contains the script to execute task 15 ( `task15.jl` ) and a "Plots" folder for the output plots. To run the code these are the instructions:
-1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project`.
+1. Make sure you are in the root directory of the repository: so `PoCS_Project`.
 2. From the bash terminal, run the following command: `julia code/task_15/task15.jl`. This will execute the script.
 
 ## Task 34
 This folder contains the script to execute task 34 ( `task34.jl` ) and a "Plots" folder for the output plots. To run the code these are the instructions:
-1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project`.
+1. Make sure you are in the root directory of the repository: so `PoCS_Project`.
 2. From the bash terminal, run the following command: `julia code/task_34/task34.jl`. This will execute the script.
 
 ## Task 44
@@ -26,6 +26,6 @@ The file needed are:
 Note: the USA edge_list is not present in the repository as it is too large. But the `graph_data.csv` contains the pre-computed analysis of all graphs.
 
 Given that all data files are present in the "Data" folder, to run the code these are the instructions:
-1. Make sure you are either in the root directory of the repository or in the code folder: so `PoCS_Project`.
+1. Make sure you are either in the root directory of the repository: so `PoCS_Project`.
 2. In the bash terminal, run the following command: `julia code/task_44/task44_1.jl`. This will execute the first part of the script where the raw data is processed and the output files are generated.
 3. In the bash terminal, run the following command: `julia code/task_44/task44_2.jl`. This will execute the second part of the script where the analysis is performed and the output plots are generated.
