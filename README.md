@@ -9,7 +9,7 @@ The repository is divided into 3 main folders:
 
 Additionaly there are some files in the root directory:
 - `README.md`: This file.
-- `final_report.pdf`: The final report of the project.
+- `report.pdf`: The final report of the project.
 - `LICENSE`: The license file.
 - `.gitignore`: The gitignore file.
 - `Project.toml`: The Julia environment files.
