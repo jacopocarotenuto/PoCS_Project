@@ -24,7 +24,7 @@ end
 SetUpEnviroment()
 gr()
 
-file_to_write_results = "./FitResults.txt"
+file_to_write_results = "./FitResults1.txt"
 AllStruct = []
 
 # Data Structure to store all relevant information of a Sandpile Simulation
@@ -154,14 +154,14 @@ function PlotResults(file_name, SandPile)
     
     ## Plot Cascade Size Distribution
     CascadeDistributionPlot = plot(SandPile.Sizes[3:end], SandPile.SizesProbabilities[3:end], legend=false, xaxis=:log, yaxis=:log,linewidth=6)
-    CascadeDistributionPlot = plot!(SandPile.Sizes[3:end], exp.(ExponentialThresholdModel(log.(SandPile.Sizes), [SandPile.TauSizes, SandPile.CharacSize]))[3:end], xaxis=:log, yaxis=:log, legend=false, xlabel="Cascade Sizes", ylabel="Probability", title="Cascade Size Distribution", yguidefontsize=25,xguidefontsize=25, titlefontsize=25,xtickfontsize=18,ytickfontsize=18, linewidth=6)
+    CascadeDistributionPlot = plot!(SandPile.Sizes[3:end], exp.(ExponentialThresholdModel(log.(SandPile.Sizes), [SandPile.TauSizes, SandPile.CharacSize]))[3:end], xaxis=:log, yaxis=:log, legend=false, xlabel="Cascade Sizes", ylabel="Probability", title="Cascade Size Distribution", yguidefontsize=30,xguidefontsize=30, titlefontsize=30,xtickfontsize=18,ytickfontsize=18, linewidth=6)
     
     ## Plot Cascade Times Distribution
     CascadeTimesDistributionPlot = plot(SandPile.Times[3:end], SandPile.TimesProbabilities[3:end], legend=false, xaxis=:log, yaxis=:log,linewidth=6)
-    CascadeTimesDistributionPlot = plot!(SandPile.Times[3:end], exp.(ExponentialThresholdModel(log.(SandPile.Times), [SandPile.TauTimes, SandPile.CharacTime]))[3:end], xaxis=:log, yaxis=:log, legend=false, xlabel="Cascade Durations", ylabel="Probability", title="Cascade Durations Distribution", yguidefontsize=25,xguidefontsize=25, titlefontsize=25,xtickfontsize=18,ytickfontsize=18,linewidth=6)
+    CascadeTimesDistributionPlot = plot!(SandPile.Times[3:end], exp.(ExponentialThresholdModel(log.(SandPile.Times), [SandPile.TauTimes, SandPile.CharacTime]))[3:end], xaxis=:log, yaxis=:log, legend=false, xlabel="Cascade Durations", ylabel="Probability", title="Cascade Durations Distribution", yguidefontsize=30,xguidefontsize=30, titlefontsize=30,xtickfontsize=18,ytickfontsize=18,linewidth=6)
     
     ## Plot Cascade Times vs Cascade Sizes
-    CascadeTimesVsSizesPlot = scatter(SandPile.CascadeDurations, SandPile.CascadeSizes, xlabel="Cascade Sizes", ylabel="Cascade Durations", legend=false, xaxis=:log,yaxis=:log, title = "Cascade Durations vs Cascade Sizes", markershape=:x, markerstrokewidth=0.1, yguidefontsize=25,xguidefontsize=25, titlefontsize=25,xtickfontsize=18,ytickfontsize=18)
+    CascadeTimesVsSizesPlot = scatter(SandPile.CascadeDurations, SandPile.CascadeSizes, xlabel="Cascade Sizes", ylabel="Cascade Durations", legend=false, xaxis=:log,yaxis=:log, title = "Cascade Durations vs Cascade Sizes", markershape=:x, markerstrokewidth=0.1, yguidefontsize=30,xguidefontsize=30, titlefontsize=30,xtickfontsize=18,ytickfontsize=18)
     CascadeTimesVsSizesPlot = plot!(range(minimum(SandPile.CascadeDurations),maximum(SandPile.CascadeDurations),length=100), range(minimum(SandPile.CascadeDurations),maximum(SandPile.CascadeDurations),length=100).^(SandPile.TauSizesTimes), xaxis=:log, yaxis=:log ,legend=false, linewidth = 3)
 
     ## Layout Plots
@@ -295,5 +295,6 @@ SaveResultsToFile(file_to_write_results, BarabasiAlbert)
 append!(AllStruct, [BarabasiAlbert])
 
 TotalPlot(AllStruct)
+
 
 print("\rTask 15 Completed                                                                                 ")

@@ -2,11 +2,11 @@
 
 \resp{Jacopo Carotenuto}
 \section{Introduction}
-In this task we will study the "Sandpile Model" on different types of networks. This model is a type of dynamic process that can be simulated on a network that exhibits self-organized criticality (SOC). The model has been studied in different types of networks and some interesting relations have emerged, especially about the distribution of the avalanche size and duration. In this task we will simulate the model on different networks and calculate the corresponding distributions.
+In this task the Bak-Tal-Wiesenfeld Sandpile Model\cite{SandpileModel} is studied on different types of networks. This model is a type of dynamic process that can be simulated on a network that exhibits self-organized criticality (SOC). The model has been studied in different types of networks and some interesting relations have emerged, especially about the distribution of the avalanche size and duration. In this task the model will be simulated on different networks and the corresponding distributions calculated
 
 \section{Model Description}
 
-The "Sandpile Model" is a type of dynamic process that can be simulated on a network that exhibits self-organized criticality (SOC).
+The Bak-Tal-Wiesenfeld Sandpile Model\cite{SandpileModel} is a type of dynamic process that can be simulated on a network that exhibits self-organized criticality (SOC).
 The mechanism of this model is rather simple:
 \begin{enumerate}
     \item The network is initialized with every node having zero height $h$ and having threshold $z_i = k_i$ where $k_i$ is the degree of the node
@@ -24,7 +24,7 @@ This values vary based on the type of network and parameters used for the simula
 In \cite{scale_free_sandpile} it's found that, for the avalanche size, $\tau = \frac{\gamma}{\gamma -1}$ in scale-free networks with power-law degree distribution with exponent $\gamma$.
 
 Other works \cite{random_graph_sandpile} analyzed different type of network with different degree distributions and found similar power-law distributions.
-In this task I simulated the sand-pile model on a variety of different networks and calculated the corresponding parameters.
+In this task the model is simulated on eight different types of networks (Gaussian Degree Distribution, Uniform Degree Distribution, Static Scale Free Network, Erdos-Renyi Network, Barabasi-Albert Network) and the corresponding distributions calculated.
 
 \section{Simulations}
 
@@ -58,14 +58,24 @@ In both distributions, the tail was cut to exclude noise from finite-size effect
         \caption{Gaussian Degree Distribution, $\mu = 20, \sigma = 6$}
     \end{figure}
 
-For the scale-free networks, the $\tau_{size}$ were not exactly in accordance with the value predicted by \cite{scale_free_sandpile} but it was near enough to hypothesize that the difference was caused by the low number of simulations performed here.
+For the scale-free networks, the $\tau_{size}$ were not exactly in accordance with the value predicted by \cite{scale_free_sandpile} but it was near enough to hypothesize that the difference was caused by the low number of simulations performed here. Here are the results for the $\tau_{size}$  and their expected values:
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|c|c|c|c|c|}
+    \hline
+    $\gamma$  & 2    & 2.5  & 3    & 4    \\ \hline
+    Simulated & 1.98 & 1.16 & 1.49 & 1.27 \\ \hline
+    Expected  & 2    & 1.66 & 1.5  & 1.33 \\ \hline
+    \end{tabular}
+\end{table}
+
 
 
 We can the compare all the size distribution by plotting them all together:
 
     \begin{figure}[H]
         \centering
-        \includegraphics[width=0.7\textwidth]{images/Task15/AllNetworks.pdf}
+        \includegraphics[width=0.5\textwidth]{images/Task15/AllNetworks.pdf}
         \caption{All Networks Size Distributions}
     \end{figure}
 

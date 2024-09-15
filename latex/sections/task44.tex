@@ -2,7 +2,7 @@
 
 \resp{Jacopo Carotenuto}
 \section{Introduction}
-In this task the goal was to extract a network for each country present in the Facebook Social Connectedness Index data \cite{FacebookSocialConnectednessIndexData}.
+In this task the goal was to extract a network for each country present in the Facebook Scaled Social Connectedness Index data \cite{FacebookSocialConnectednessIndexData}.
 The data was collected by Facebook and it is based on the number of friendships between people in different countries.
 From the documentation:
 \begin{quote}
@@ -38,11 +38,11 @@ To assign to each location its coordinates, the geospatial data for each subdivi
 \end{itemize}
 The provided data was in the form of a ".shp" or ".geojson" files, so for the coordinates extraction the "GeoStats.jl" package was used\cite{geostats_package}. For all the administrative subdivision a polygon was provided, so the centroid of each polygon was used as the coordinates for the location. As the provided Facebook data contained different levels of administrative subdivisions, each level was analyzed separately.
 Then, as the Facebook area code used was different from all the other denominations, the area codes of each location were transformed in the Facebook format.
-Then, for each unique node (excluding the ones in the USA) we associated the coordinates and the label (also found in the official data).
+Then, for each unique node we associated the coordinates and the label (also found in the official data).
 The final node list was saved in a ".csv" file, saving the node ID, longitude, latitude and label.
 
 \section{Network Comparison}
-The resulting countries SCI-weighted network were all analyzed using Julia and some important network properties were extracted. Some of them are contained in the following plots.
+The resulting countries SCI-weighted undirected network were all analyzed using Julia and some important network properties were extracted. Some of them are contained in the following plots.
 
 \begin{figure}[H]
     \centering
